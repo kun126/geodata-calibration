@@ -6,8 +6,7 @@ import odc.geo.xr
 import numpy as np
 import geopandas as gpd
 
-def reproj_crop_for_vector(target_file, preproj_file, out_file=False):
-    pre, tar = gpd.read_file(preproj_file), gpd.read_file(target_file)
+def reproj_crop_for_vector(target_data, preproj_data, out_file=False):
     pre = pre.to_crs(tar.crs)
     pre = gpd.clip(pre, tar)
     if pre['geometry'][0].geom_type == 'Polygon':
@@ -16,16 +15,14 @@ def reproj_crop_for_vector(target_file, preproj_file, out_file=False):
         pre.to_file(out_file, driver='ESRI Shapefile')
     return pre
     
-def reproj_crop_for_raster(target_file, preproj_file, out_file=False, resolution=(100,100)):
+def reproj_crop_for_raster(target_data, preproj_data, out_file=False, resolution=(100,100)):
     # TD: add func & parameter docstring
     # TD: add lat lon validation
     # TD: add sampling method
     
-    if target_file[-3:] == 'tif':
-        pre, tar = rioxarray.open_rasterio(preproj_file), rioxarray.open_rasterio(target_file)
+    if type(target_data) == xr.core.dataarray.DataArray:
         out = pre.rio.reproject_match(tar)
-    elif target_file[-3:] == 'shp':
-        pre, tar = rioxarray.open_rasterio(preproj_file), gpd.read_file(target_file)         
+    elif type(target_data) == gpd.geodataframe.GeoDataFrame:
         out = pre.rio.reproject(
             dst_crs=tar.crs,
             resolution=resolution
