@@ -5,6 +5,16 @@ build-backend = "hatchling.build"
 [project]
 name = "geodata_calibration"
 version = "0.1.0"
+authors = [
+  { name="kun126" },
+]
+description = "A package setup with github workflow"
+readme = "README.md"
+requires-python = ">=3.10"
+
+[project.urls]
+Homepage = "https://github.com/kun126/geodata-calibration"
+Issues = "https://github.com/kun126/geodata-calibration/issues"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/geodata_calibration"]
