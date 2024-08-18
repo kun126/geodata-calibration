@@ -1,5 +1,5 @@
 geopandas==0.14.2
-numpy==2.0.1
+numpy==1.26.4
 odc_geo==0.4.8
 rioxarray==0.17.0
 Shapely==2.0.5
