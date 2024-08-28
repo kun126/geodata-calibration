@@ -15,7 +15,7 @@ This repository shows a minimal Continuous Integration setup using GitHub Action
 │       └── utils.py
 ├── .github
 │   └── workflows
-│       ├── python-app.yml
+│       └── python-app.yml
 └── tests
     └── test_utils.py
 ```
