@@ -9,6 +9,8 @@ This repository shows a minimal Continuous Integration setup using GitHub Action
 ├── .pre-commit-config.yaml
 ├── pyproject.toml
 ├── requirements.txt
+├── Dockerfile
+├── .dockerignore
 ├── src
 │   └── geodata_calibration
 │       ├── __init__.py
@@ -37,4 +39,7 @@ This file configures pre-commit hooks for the repository, ensuring that code is 
 
 ### 6. `pyproject.toml`
 This file configures tools and options needed for the build system, dependency management, and testing of the project.
+
+### 7. `Dockerfile` and `.dockerignore`
+The Dockerfile is used to build a Docker image for this project. The .dockerignore file specifies which files and directories should be excluded from the Docker build context. 
 
